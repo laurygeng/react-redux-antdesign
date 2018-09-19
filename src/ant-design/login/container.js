@@ -6,6 +6,8 @@ import './app.less'
 import * as Redux from 'redux'
 import * as ReactRedux from 'react-redux'
 
+import RegistrationForm from './components/form';
+
 import { Tabs, InputNumber, Cascader, Row, Select, Col, Layout, Form, DatePicker, Icon, Input, Button, Tooltip, Checkbox, Radio } from 'antd';
 const { Header, Sider, Content, Footer} = Layout;
 const { TextArea } = Input;
@@ -61,57 +63,52 @@ class Container extends React.Component {
         //     },
         // };
 
-        const config = {
-        rules: [{ type: 'object', required: true, message: 'Please select time!' }],
-        };
+        // const config = {
+        // rules: [{ type: 'object', required: true, message: 'Please select time!' }],
+        // };
         const { mode, initSubject } = this.state;
 
-    // let checkPass = (rule, value, callback)=>{
-    //     const {getFieldValue} = form;
-    //     if(value && value != getFieldValue('userpassword')){
-    //         callback('两次输入的密码不一致');
-    //     }else{
-    //         callback();
-    //     }
-    // }
+        // let checkPass = (rule, value, callback)=>{
+        //     const {getFieldValue} = form;
+        //     if(value && value != getFieldValue('userpassword')){
+        //         callback('两次输入的密码不一致');
+        //     }else{
+        //         callback();
+        //     }
+        // }
 
-    const tailFormItemLayout = {
-        wrapperCol: {
-         // xs: {
-            span: 3,
-            //justify=center,
-            pull:3
-         //   offset: 0,
-         // },
-        //   sm: {
-        //     span: 16,
-        //     offset: 8,
-        //   },
-        },
-      };
-      const residences = [{
-        value: 'zhejiang',
-        label: 'Zhejiang',
-        children: [{
-          value: 'hangzhou',
-          label: 'Hangzhou',
-          children: [{
-            value: 'xihu',
-            label: 'West Lake',
-          }],
-        }],
-      }, {
-        value: 'jiangsu',
-        label: 'Jiangsu',
-        children: [{
-          value: 'nanjing',
-          label: 'Nanjing',
-          children: [{
-            value: 'zhonghuamen',
-            label: 'Zhong Hua Men',
-          }],
-        }],
-      }];
+        // const tailFormItemLayout = {
+        //     wrapperCol: {
+        //         span: 3,
+        //         pull:3
+        //     },
+        // };
+
+        //   const residences = [{
+        //     value: 'zhejiang',
+        //     label: 'Zhejiang',
+        //     children: [{
+        //       value: 'hangzhou',
+        //       label: 'Hangzhou',
+        //       children: [{
+        //         value: 'xihu',
+        //         label: 'West Lake',
+        //       }],
+        //     }],
+        //   }, {
+        //     value: 'jiangsu',
+        //     label: 'Jiangsu',
+        //     children: [{
+        //       value: 'nanjing',
+        //       label: 'Nanjing',
+        //       children: [{
+        //         value: 'zhonghuamen',
+        //         label: 'Zhong Hua Men',
+        //       }],
+        //     }],
+        //   }];
+
+
     return (
         <Layout>
         <Header>Header</Header>
@@ -166,6 +163,8 @@ class Container extends React.Component {
                         在拖拽事件处理器方法中更新状态，然后再次运行render函数，会在this.state中读取新的数据来显示标题
                     </p>
                 
+                    <RegistrationForm></RegistrationForm>
+
                 </TabPane>
                 <TabPane tab="Modal" key="2">Content of tab 2</TabPane>
                 <TabPane tab="Tree" key="3">Content of tab 3</TabPane>
