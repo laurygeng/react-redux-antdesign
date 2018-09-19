@@ -194,6 +194,20 @@ module.exports = {
           // In production, they would get copied to the `build` folder.
           // This loader doesn't use a "test" so it will catch all modules
           // that fall through the other loaders.
+          {
+            test: /\.less$/, //  这里加上less
+            use: [
+              {
+                loader: require.resolve('style-loader') 
+              },
+              {
+                loader: require.resolve('css-loader') 
+              },
+              {
+                loader: require.resolve('less-loader') 
+              }
+            ]
+          },
 
           {
             // Exclude `js` files to keep "css" loader working as it injects

@@ -1,4 +1,5 @@
 import React from 'react'
+import './app.less'
 
 class AppDragDropDemo extends  React.Component {
     state = {
@@ -20,10 +21,8 @@ class AppDragDropDemo extends  React.Component {
 
     onDrop = (ev, cat) => {
        let id = ev.dataTransfer.getData("id");
-       
        let tasks = this.state.tasks.filter((task) => {
            if (task.name == id) {
-               debugger
                console.log(cat);
                task.category = cat;
            }
@@ -70,8 +69,6 @@ class AppDragDropDemo extends  React.Component {
                      <span className="task-header">COMPLETED</span>
                      {tasks.complete}
                 </div>
-
-
             </div>
         );
     }
