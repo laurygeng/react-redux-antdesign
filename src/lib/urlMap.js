@@ -20,7 +20,6 @@ export class BaseModel{
             this.promise=new Promise(function(resolve,reject){
                 setTimeout(function(){
                     resolve(window.mockData[opts.mockUrl||opts.url]);
-                    debugger
                 },1000);//settimeout模仿ajax；虽然不是很完美，但却非常简单，暂时这么用
             });
         }else{
