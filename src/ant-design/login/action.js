@@ -14,30 +14,30 @@ export function getActionTypes(){
     return actionTypes;
 }
 
-export function getTableList(activityId,pageNum,pageSize){
-   // debugger
-    return function (dispatch) {
-        return getTableListInfo(activityId,pageNum,pageSize).then(response => {
-            //debugger
-            //console.log(response);
-            dispatch({//dispatch需要传入的值
-                type:actionTypes.GET_TABLE_LIST_DATA,
-                data:response.data
-                //data:formatTableListData(response)
-            });
-        }, xhr => {
+// export function getTableList(activityId,pageNum,pageSize){
+//    // debugger
+//     return function (dispatch) {
+//         return getTableListInfo(activityId,pageNum,pageSize).then(response => {
+//             //debugger
+//             //console.log(response);
+//             dispatch({//dispatch需要传入的值
+//                 type:actionTypes.GET_TABLE_LIST_DATA,
+//                 data:response.data
+//                 //data:formatTableListData(response)
+//             });
+//         }, xhr => {
 
-        });
-    };
-}
+//         });
+//     };
+// }
 
-//发送ajax请求按钮表格数据
-export function dispatchTableListData (activityId,pageNum,pageSize){
-    //根据返回的btn数据来请求table数据
-    //debugger;
-    getTableList(activityId,pageNum,pageSize)(store.dispatch);
-    // store.dispatch({...});
-}
+// //发送ajax请求按钮表格数据
+// export function dispatchTableListData (activityId,pageNum,pageSize){
+//     //根据返回的btn数据来请求table数据
+//     //debugger;
+//     getTableList(activityId,pageNum,pageSize)(store.dispatch);
+//     // store.dispatch({...});
+// }
 
 
 

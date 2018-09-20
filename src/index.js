@@ -9,14 +9,15 @@ import registerServiceWorker from './registerServiceWorker';
 import reducers from './reducer'
 import './config'
 import App from './app'
+import store from './ant-design/login/store';
 
 registerServiceWorker()
 
-const store = createStore(reducers, compose(
-    applyMiddleware(thunk),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
-))
-
+// const store = createStore(reducers, compose(
+//     applyMiddleware(thunk),
+//     window.devToolsExtension ? window.devToolsExtension() : f => f
+// ))
+window.store=store;
 ReactDOM.render((
     <Provider store={store}>
         <BrowserRouter>

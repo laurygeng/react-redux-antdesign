@@ -4,7 +4,8 @@ import rootReducer from './reducer';
 // import ReduxThunk from 'ReduxThunk';
 
 import * as Redux from 'redux'
-import thunk from 'redux-thunk'
+import ReduxThunk from 'redux-thunk'
+
 
 const finalCreateStore = Redux.compose(
 

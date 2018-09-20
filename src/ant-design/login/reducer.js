@@ -4,7 +4,9 @@ import * as Redux from 'redux'
 import * as ReactRedux from 'react-redux'
 
 let initState={//初始化的数据结构，这里的结构一定要全，后续加入的属性比较难监控
-	tableList:{
+	pageData:{
+		name:'123',
+		class:['语文','数学','英语'],
 	}
 }
 
@@ -15,8 +17,8 @@ const rootReducer = Redux.combineReducers({
 
 	//studyPlanInfo的reduce，一个reduce单元,可以拆封到一个reduce文件夹中
 	//一个reducer对应一个组件，一个组件可以有多个action，所以一个reducer中是个switch函数，按照action不同执行不同的state更新操作
-
-	tableList:function (state = initState.tableList, action) {
+	
+	pageData:function (state = initState.pageData, action) {
 		//debugger;
 	    switch (action.type) {
 	        case actionTypes.GET_TABLE_LIST_DATA:{
