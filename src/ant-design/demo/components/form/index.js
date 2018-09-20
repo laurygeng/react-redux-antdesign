@@ -1,17 +1,12 @@
 import React from 'react'
 import './index.less'
-
-import { Tabs, InputNumber, Cascader, Row, Select, Col, Layout, Form, DatePicker, Icon, Input, Button, Tooltip, Checkbox, Radio } from 'antd';
-const { Header, Sider, Content, Footer} = Layout;
+import moment from 'moment';
+import {  InputNumber, Cascader, Row, Select, Form, DatePicker, Icon, Input, Button, Tooltip, Checkbox, Radio } from 'antd';
 const { TextArea } = Input;
-const TabPane = Tabs.TabPane;
 const FormItem = Form.Item;
 const Option = Select.Option;
-const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
-
 class RegistrationForm extends React.Component {
-
     constructor(props) {
         super(props);
     }
@@ -40,9 +35,15 @@ class RegistrationForm extends React.Component {
         const mode = e.target.value;
         this.setState({ mode });
       }
+      handleFormSubmit = ()=>{
+          this.props.handleFormSubmit();
+      }
+
 
   render(){
-
+    const {handleFormSubmit,formInitData} = this.props;
+    //debugger
+    const {residences,inputBox,numInputBox,textArea,singleSelectId,singleOptions,mutipleOptions,mutipleSelectId} = formInitData;
     const  { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched }  = this.props.form;
     const formItemLayout = {
         labelCol: {
@@ -56,7 +57,8 @@ class RegistrationForm extends React.Component {
       };
 
     const config = {
-    rules: [{ type: 'object', required: true, message: 'Please select time!' }],
+        initialValue: moment('2015-01-01', 'YYYY-MM-DD'),
+        rules: [{ type: 'object', required: true, message: 'Please select time!' }],
     };
     const { mode, initSubject } = this.state;
 
@@ -83,29 +85,12 @@ class RegistrationForm extends React.Component {
         //   },
         },
       };
-      const residences = [{
-        value: 'zhejiang',
-        label: 'Zhejiang',
-        children: [{
-          value: 'hangzhou',
-          label: 'Hangzhou',
-          children: [{
-            value: 'xihu',
-            label: 'West Lake',
-          }],
-        }],
-      }, {
-        value: 'jiangsu',
-        label: 'Jiangsu',
-        children: [{
-          value: 'nanjing',
-          label: 'Nanjing',
-          children: [{
-            value: 'zhonghuamen',
-            label: 'Zhong Hua Men',
-          }],
-        }],
-      }];
+
+
+
+
+
+
     return (
         <div className="page-wrap">
             <Form  onSubmit={this.handleSubmit}>
@@ -121,8 +106,8 @@ class RegistrationForm extends React.Component {
                             </span>
                         )}>
                         {
-                        getFieldDecorator(`subject`, {
-                            initialValue: initSubject,
+                        getFieldDecorator(`inputBox`, {
+                            initialValue: inputBox,
                             rules: [
                                 {
                                     required: true,
@@ -152,7 +137,8 @@ class RegistrationForm extends React.Component {
                             </span>
                         )}>
                         {
-                        getFieldDecorator(`subject`, {
+                        getFieldDecorator(`numInputBox`, {
+                            initialValue: numInputBox,
                             rules: [
                                 {
                                     required: true,
@@ -172,13 +158,14 @@ class RegistrationForm extends React.Component {
                 <Row>
                     <FormItem   {...formItemLayout} label={(
                             <span>
-                            数字输入框&nbsp;
+                            文本输入框&nbsp;
                             <Tooltip title="What do you want others to call you?">
                                 <Icon type="question-circle-o" />
                             </Tooltip>
                             </span>
                         )}>
-                        {getFieldDecorator(`textAreaOutPut`, {
+                        {getFieldDecorator(`textArea`, {
+                            initialValue: textArea,
                             rules: [
                             {
                                 max: 1000,
@@ -197,19 +184,18 @@ class RegistrationForm extends React.Component {
                             {...formItemLayout}
                             label="DatePicker"
                             >
-                            {getFieldDecorator('date-picker', config)(
+                            {getFieldDecorator('dataPicker', config)(
                                 <DatePicker style={{
                                     width: '250px'
-                                }}/>
+                                }} showTime format="YYYY-MM-DD" />
                             )}
                     </FormItem>
                 </Row>
-    
                 {/* <iframe src="https://www.hitalk.com" width="300" height="550"></iframe> */}
                 <h2>checkbox</h2>
                 <Row>
                     <FormItem {...formItemLayout}>
-                        {getFieldDecorator('agreement', {
+                        {getFieldDecorator('checkBox', {
                             valuePropName: 'checked',
                         })(
                             <Checkbox>I have read the <a href="">agreement</a></Checkbox>
@@ -226,7 +212,6 @@ class RegistrationForm extends React.Component {
                         <Radio value={4}>D</Radio>
                     </RadioGroup>
                 </Row>
-
                 <h2>select</h2>
                 <Row>
                     <FormItem
@@ -235,17 +220,22 @@ class RegistrationForm extends React.Component {
                         // labelCol={{ span: 5 }}
                         // wrapperCol={{ span: 12 }}
                         >
-                        {getFieldDecorator('gender', {
+                        {getFieldDecorator('singleSelectId', {
+                            initialValue:singleSelectId,
                             rules: [{ required: true, message: 'Please select your gender!' }],
                         })(
                             <Select
-                            placeholder="Select a option and change input text above"
+                            placeholder="请选择一个单选项"
                             onChange={this.handleSelectChange} style={{
                                 width: '250px'
                             }}
                             >
-                            <Option value="male">male</Option>
-                            <Option value="female">female</Option>
+                            { singleOptions && singleOptions.length > 0 && singleOptions.map((x) => {
+                                    return <Option key={x.optionId} value={x.optionId}>{x.optionName}</Option>;
+                                })
+                            }
+                            {/* <Option value="male">male</Option>
+                            <Option value="female">female</Option> */}
                             </Select>
                         )}
                     </FormItem>
@@ -255,17 +245,22 @@ class RegistrationForm extends React.Component {
                     {...formItemLayout}
                     label="多选下拉"
                     >
-                    {getFieldDecorator('select-multiple', {
+                    {getFieldDecorator('mutipleSelectId', {
+                        initialValue:mutipleSelectId,
                         rules: [
-                        { required: true, message: 'Please select your favourite colors!', type: 'array' },
+                        { required: true, message: '请选择一个多选下拉，不能为空哦', type: 'array' },
                         ],
                     })(
                         <Select style={{
                             width: '250px'
-                        }} mode="multiple" placeholder="Please select favourite colors">
-                            <Option value="red">Red</Option>
+                        }} mode="multiple" placeholder="请选择-这是一个多选下拉">
+                            {/* <Option value="red">Red</Option>
                             <Option value="green">Green</Option>
-                            <Option value="blue">Blue</Option>
+                            <Option value="blue">Blue</Option> */}
+                            { mutipleOptions && mutipleOptions.length > 0 && mutipleOptions.map((x) => {
+                                    return <Option key={x.optionId} value={x.optionId}>{x.optionName}</Option>;
+                                })
+                            }
                         </Select>
                     )}
                     </FormItem>
@@ -295,7 +290,7 @@ class RegistrationForm extends React.Component {
 
                 <Row>
                     <FormItem  {...formItemLayout}>
-                        <Button type="primary" htmlType="submit">提交按钮</Button>
+                        <Button type="primary" onClick={this.handleFormSubmit}>提交按钮</Button>
                     </FormItem>
                 </Row>
 

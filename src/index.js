@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -9,7 +10,20 @@ import registerServiceWorker from './registerServiceWorker';
 import reducers from './reducer'
 import './config'
 import App from './app'
-import store from './ant-design/login/store';
+import store from './ant-design/demo/store';
+
+
+
+
+//mock数据
+window.mockData={};
+// if(/(\?mock$)|(\?mock(\&|\=))|(\&mock$)|(\&mock(\&|\=))/.test(location.search)){//是否mock
+// 	require.ensure([],function(require){
+// 		window.mockData=require('mock/index.js').default;
+// 	});
+// }
+
+window.mockData=require('./mock/index.js').default;
 
 registerServiceWorker()
 
