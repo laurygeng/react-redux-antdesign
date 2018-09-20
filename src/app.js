@@ -11,7 +11,7 @@ class App extends React.Component {
         return (
             <div>
                 <Route path="/drag" component={AppDragDropDemo}></Route>
-                <Route path="/login" component={Container}></Route>
+                <Route path="/demo" component={Container}></Route>
                 {/* <DatePicker /> */}
             </div>
         )
