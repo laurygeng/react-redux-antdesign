@@ -11,6 +11,7 @@ import reducers from './reducer'
 import './config'
 import App from './app'
 import store from './ant-design/demo/store';
+import Container from './ant-design/demo/container.js'
 
 
 
@@ -25,17 +26,20 @@ window.mockData={};
 
 window.mockData=require('./mock/index.js').default;
 
-registerServiceWorker()
+//registerServiceWorker()
 
 // const store = createStore(reducers, compose(
 //     applyMiddleware(thunk),
 //     window.devToolsExtension ? window.devToolsExtension() : f => f
 // ))
 window.store=store;
+//console.log(store);
+
 ReactDOM.render((
     <Provider store={store}>
         <BrowserRouter>
             <App></App>
+            {/* <Container /> */}
         </BrowserRouter>
     </Provider>
 ), document.getElementById('root'));
@@ -59,3 +63,7 @@ ReactDOM.render((
 /*
   Provider组件把你的这个App项目的组件包含起来，那么这些包含起来的组件以及他们的子组件就可以被提供react-redux的注入
 */ 
+
+// store.subscribe(() => { //监听state变化
+//     console.log('监听state变化', store.getState())
+// });

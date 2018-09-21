@@ -4,14 +4,14 @@ import rootReducer from './reducer';
 // import ReduxThunk from 'ReduxThunk';
 
 import * as Redux from 'redux'
-import ReduxThunk from 'redux-thunk'
+import thunk from 'redux-thunk'
 
 
 const finalCreateStore = Redux.compose(
 
 	/* 正常dispatch只支持对象类型的action，需要改变store的dispatch方法，让他支持function，在function里面执行ajax，
 	   在ajax的callback中调用原生的dispatch方法 ：applyMiddleware+thunk来修改store的dispatch; */
-    Redux.applyMiddleware(ReduxThunk)
+    Redux.applyMiddleware(thunk)
 )(Redux.createStore);
 
 

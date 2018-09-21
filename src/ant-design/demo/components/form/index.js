@@ -18,33 +18,50 @@ class RegistrationForm extends React.Component {
         initSubject: 'sdfsd'
     }
 
-    handleSubmit = (e) => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-          if (!err) {
-            console.log('Received values of form: ', values);
-          }
-        });
-      }
-
-      submitDemoForm =()=>{
-        alert('我提交了表单哦')
-      } 
+    // handleSubmit = (e) => {
+        //这个是form表单里面默认的提交方式，一般不用这个
+    //     e.preventDefault();
+    //     this.props.form.validateFields((err, values) => {
+    //       if (!err) {
+    //         console.log('Received values of form: ', values);
+    //       }
+    //     });
+    //   }
 
       handleModeChange = (e) => {
         const mode = e.target.value;
         this.setState({ mode });
       }
       handleFormSubmit = ()=>{
-          this.props.handleFormSubmit();
+          const {form} = this.props;
+          //获取全部组件的值
+          let formData = form.getFieldsValue();  
+          console.log(formData);
+          //this.props.regFormSubmit(formData);
+          /*通过属性调用的方法也可以让子组件通知到父组件自身的变化，
+            但是在多层组件调用的时候
+            更多的会使用redux的方式来实现组件间的通信
+          */
       }
-
+      handleCheckBox = (e) =>{
+        //debugger;
+        const {form} = this.props;
+        //获取全部组件的值
+        form.setFieldsValue({checkBox:e.target.checked});  
+        //console.log();
+      }
+      handleDatePickerChange = (value,dateString) =>{
+        const {form} = this.props;
+        debugger
+        form.setFieldsValue({datePicker:dateString});  
+        //debugger
+      }
 
   render(){
     const {handleFormSubmit,formInitData} = this.props;
     //debugger
-    const {residences,inputBox,numInputBox,textArea,singleSelectId,singleOptions,mutipleOptions,mutipleSelectId} = formInitData;
-    const  { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched }  = this.props.form;
+    const {datePicker, radioGroup, groupOptions, residences, inputBox, numInputBox, textArea, singleSelectId, singleOptions, mutipleOptions, mutipleSelectId, checkBox} = formInitData;
+    const  { getFieldDecorator }  = this.props.form;
     const formItemLayout = {
         labelCol: {
           span: 3 ,
@@ -57,8 +74,8 @@ class RegistrationForm extends React.Component {
       };
 
     const config = {
-        initialValue: moment('2015-01-01', 'YYYY-MM-DD'),
-        rules: [{ type: 'object', required: true, message: 'Please select time!' }],
+        initialValue: moment(datePicker, 'YYYY-MM-DD'),
+        //rules: [{ type: 'object', required: true, message: 'Please select time!' }],
     };
     const { mode, initSubject } = this.state;
 
@@ -86,14 +103,9 @@ class RegistrationForm extends React.Component {
         },
       };
 
-
-
-
-
-
     return (
         <div className="page-wrap">
-            <Form  onSubmit={this.handleSubmit}>
+            <Form>
                 <h2>Input</h2>
                 <Row>
                     <FormItem      {...formItemLayout}
@@ -184,41 +196,41 @@ class RegistrationForm extends React.Component {
                             {...formItemLayout}
                             label="DatePicker"
                             >
-                            {getFieldDecorator('dataPicker', config)(
-                                <DatePicker style={{
+                            {getFieldDecorator('datePicker', config)(
+                                <DatePicker  onChange={this.handleDatePickerChange} style={{
                                     width: '250px'
-                                }} showTime format="YYYY-MM-DD" />
+                                }} />
                             )}
                     </FormItem>
                 </Row>
-                {/* <iframe src="https://www.hitalk.com" width="300" height="550"></iframe> */}
                 <h2>checkbox</h2>
                 <Row>
                     <FormItem {...formItemLayout}>
                         {getFieldDecorator('checkBox', {
+                            initialValue:checkBox,
                             valuePropName: 'checked',
                         })(
-                            <Checkbox>I have read the <a href="">agreement</a></Checkbox>
+                            <Checkbox onChange={this.handleCheckBox}>I have read the <a href="">agreement</a></Checkbox>
                         )}
                     </FormItem>
                 </Row>
 
                 <h2>Radio</h2>
                 <Row>
-                    <RadioGroup name="radiogroup" defaultValue={1}>
-                        <Radio value={1}>A</Radio>
-                        <Radio value={2}>B</Radio>
-                        <Radio value={3}>C</Radio>
-                        <Radio value={4}>D</Radio>
-                    </RadioGroup>
+                    <FormItem>
+                    {getFieldDecorator('radioGroup', {
+                            initialValue:radioGroup,
+                        })(
+                            <RadioGroup options={groupOptions} onChange={this.handleRadioGroup}>
+                            </RadioGroup>
+                    )}
+                    </FormItem>
                 </Row>
                 <h2>select</h2>
                 <Row>
                     <FormItem
                         label="单选下拉菜单"
                         {...formItemLayout}
-                        // labelCol={{ span: 5 }}
-                        // wrapperCol={{ span: 12 }}
                         >
                         {getFieldDecorator('singleSelectId', {
                             initialValue:singleSelectId,

@@ -3,7 +3,7 @@ import {BaseModel} from '../../lib/urlMap';
 
 
 //根据活动类型获取渠道信息
-export function getTableListInfo(param){
+export function getFormListInfo(param){
 	debugger
 	return new BaseModel({
 			url:"/v1/pro_activity/list/regulation",

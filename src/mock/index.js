@@ -14,20 +14,80 @@ export default {
 		"message": "OK",
 		"status": 0, //接口执行成功
 		"data": {
-			"saleUnits": [{//销售单元
-				"saleUnitName": "AdultLan",
-				"saleUnitValue": "成人口语"
-			}, {
-				"saleUnitName": "lan",
-				"saleUnitValue": "口语"
-			}],
-			"activityStatuses": [{//活动状态
-				"activityStatus": 1,
-				"activityStatusName": "启用"
-			}, {
-				"activityStatus": 2,
-				"activityStatusName": "禁用"
-			}]
+			formData: {
+				inputBox: '这是调接口之后返回的数据',
+				numInputBox: '2',
+				textArea: "虽然但是",
+				datePicker: "2015-02-01",
+				checkBox: false,
+				radio: "2",
+				radioGroup: 'Pear',
+				groupOptions: [{
+						label: 'Apple',
+						value: 'Apple'
+					},
+					{
+						label: 'Pear',
+						value: 'Pear'
+					},
+					{
+						label: 'Orange',
+						value: 'Orange'
+					},
+				],
+				singleSelectId: 2,
+				singleOptions: [{
+						optionId: 0,
+						optionName: '好好学习，天天向上',
+					},
+					{
+						optionId: 1,
+						optionName: '学习成为更好的自己',
+					},
+					{
+						optionId: 2,
+						optionName: '比你好的人，总是比你更努力'
+					}
+				],
+				mutipleSelectId: [1],
+				mutipleOptions: [{
+						optionId: 0,
+						optionName: '拉斯维加斯',
+					},
+					{
+						optionId: 1,
+						optionName: '吼吼吼',
+					},
+					{
+						optionId: 2,
+						optionName: '日本'
+					}
+				],
+				residences: [{
+					value: 'zhejiang',
+					label: 'Zhejiang',
+					children: [{
+						value: 'hangzhou',
+						label: 'Hangzhou',
+						children: [{
+							value: 'xihu',
+							label: 'West Lake',
+						}],
+					}],
+				}, {
+					value: 'jiangsu',
+					label: 'Jiangsu',
+					children: [{
+						value: 'nanjing',
+						label: 'Nanjing',
+						children: [{
+							value: 'zhonghuamen',
+							label: 'Zhong Hua Men',
+						}],
+					}],
+				}]
+			}
+
 		}
 	},
 
@@ -45,44 +105,78 @@ export default {
 		status:0,
 		message:"",
 		data:{
-			resultData: [{
-				"activityId":456321,//活动id，通过这个来跳转到对应的页面
-				"activityCode": "ACT_DASDFASDF",//活动编码
-				"activityName": "促销活动1",//活动名称
-				"saleUnit": "成人口语",//适用项目(销售单元)
-				"startDate": "2018-06-01",//开始时间
-				"endDate": "2018-06-25",//结束时间
-				"activityStatus": 1,//活动状态code； 1：启用 2：禁用；3：草稿
-				"activityStatusName": "启用",//活动状态:启用,禁用,草稿
-				"createUser": 111,//活动创建者ID
-				"createUserName": "齐达内",//活动创建者名称
-			},{
-				"activityId":456321,
-				"activityCode": "ACT_DASDFASDF",//活动编码
-				"activityName": "促销活动1",//活动名称
-				"saleUnit": "成人口语",//适用项目(销售单元)
-				"startDate": "2018-06-01",//开始时间
-				"endDate": "2018-06-25",//结束时间
-				"activityStatus": 1,//活动状态code； 1：启用 2：禁用；3：草稿
-				"activityStatusName": "启用",//活动状态:启用,禁用,草稿
-				"createUser": 111,
-				"createUserName": "齐达内",
-			},{
-				"activityId":456321,
-				"activityCode": "ACT_DASDFASDF",//活动编码
-				"activityName": "促销活动1",//活动名称
-				"saleUnit": "成人口语",//适用项目(销售单元)
-				"startDate": "2018-06-01",//开始时间
-				"endDate": "2018-06-25",//结束时间
-				"activityStatus": 1,//活动状态code； 1：启用 2：禁用；3：草稿
-				"activityStatusName": "启用",//活动状态:启用,禁用,草稿
-				"createUser": 111,
-				"createUserName": "齐达内",
-			}],
-			"pagination": {
-				"currentPageIndex": 2,//当前第几页
-				"totalCount": 100,//一共多少条,不是多少页,页码数=totalNum/pageSize
-				"pageSize": 10//每页多少条
+			formData: {
+				inputBox: '这是调接口之后返回的数据',
+				numInputBox: '2',
+				textArea: "虽然但是",
+				datePicker: "2015-02-01",
+				checkBox: false,
+				radio: "2",
+				radioGroup: 'Pear',
+				groupOptions: [{
+						label: 'Apple',
+						value: 'Apple'
+					},
+					{
+						label: 'Pear',
+						value: 'Pear'
+					},
+					{
+						label: 'Orange',
+						value: 'Orange'
+					},
+				],
+				singleSelectId: 2,
+				singleOptions: [{
+						optionId: 0,
+						optionName: '好好学习，天天向上',
+					},
+					{
+						optionId: 1,
+						optionName: '学习成为更好的自己',
+					},
+					{
+						optionId: 2,
+						optionName: '比你好的人，总是比你更努力'
+					}
+				],
+				mutipleSelectId: [1],
+				mutipleOptions: [{
+						optionId: 0,
+						optionName: '拉斯维加斯',
+					},
+					{
+						optionId: 1,
+						optionName: '吼吼吼',
+					},
+					{
+						optionId: 2,
+						optionName: '日本'
+					}
+				],
+				residences: [{
+					value: 'zhejiang',
+					label: 'Zhejiang',
+					children: [{
+						value: 'hangzhou',
+						label: 'Hangzhou',
+						children: [{
+							value: 'xihu',
+							label: 'West Lake',
+						}],
+					}],
+				}, {
+					value: 'jiangsu',
+					label: 'Jiangsu',
+					children: [{
+						value: 'nanjing',
+						label: 'Nanjing',
+						children: [{
+							value: 'zhonghuamen',
+							label: 'Zhong Hua Men',
+						}],
+					}],
+				}]
 			}
 		}
 	},
