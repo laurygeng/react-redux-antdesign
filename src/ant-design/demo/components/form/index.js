@@ -52,7 +52,7 @@ class RegistrationForm extends React.Component {
       }
       handleDatePickerChange = (value,dateString) =>{
         const {form} = this.props;
-        debugger
+        //debugger
         form.setFieldsValue({datePicker:dateString});  
         //debugger
       }

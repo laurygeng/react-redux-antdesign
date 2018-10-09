@@ -46,7 +46,7 @@ export default {
 					},
 					{
 						optionId: 2,
-						optionName: '比你好的人，总是比你更努力'
+						optionName: '比你出色的人，总是比你更努力'
 					}
 				],
 				mutipleSelectId: [1],

@@ -3,6 +3,7 @@ import './app.less'
 import * as Redux from 'redux'
 import * as ReactRedux from 'react-redux'
 import RegistrationForm from './components/form';
+import CommonTable from './components/table';
 import { Tabs, Layout} from 'antd';
 import {getFormList} from "./action";
 const { Header, Content, Footer} = Layout;
@@ -27,7 +28,7 @@ class Container extends React.Component {
         this.setState({ mode });
     }
     regFormSubmit = (param)=>{
-        debugger
+        //debugger
         console.log("1111"+param);
     }
 
@@ -107,7 +108,13 @@ class Container extends React.Component {
                     </TabPane>
                     <TabPane tab="Modal" key="2">Content of tab 2</TabPane>
                     <TabPane tab="Tree" key="3">Content of tab 3</TabPane>
-                    <TabPane tab="Table" key="4">Content of tab 4</TabPane>
+                    <TabPane tab="Table" key="4">
+                        目前比较常用的功能就是分页展示数据，功能上主要是增、删、改、查、筛选等操作。
+                        样式上可以选中、展示冻结列，根据UI覆盖表格原有的字体大小颜色、滚动条样式等等
+
+                    <CommonTable></CommonTable>
+                    
+                    </TabPane>
                 </Tabs>
 
 

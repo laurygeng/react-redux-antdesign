@@ -22,7 +22,7 @@ export function getFormList(){
     //     debugger
         return getFormListInfo().then(response => {
             console.log(response);
-            debugger
+            //debugger
             //debugger
             //console.log(response);
             window.store.dispatch({//dispatch需要传入的值

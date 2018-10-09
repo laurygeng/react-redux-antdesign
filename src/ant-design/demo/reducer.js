@@ -126,7 +126,7 @@ const rootReducer = Redux.combineReducers({
 	formData: function(state = initState.formData,action){
 		switch (action.type) {
 			case actionTypes.GET_FORM_LIST_DATA:
-			debugger
+			//debugger
 				{
 					return Object.assign({}, state, action.data);
 				}
