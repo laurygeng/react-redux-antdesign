@@ -5,13 +5,12 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
-
 import registerServiceWorker from './registerServiceWorker';
 import reducers from './reducer'
 import './config'
 import App from './app'
-import store from './ant-design/demo/store';
-import Container from './ant-design/demo/container.js'
+import store from './ant-design/scrollpagnation/store';
+import Container from './ant-design/scrollpagnation/container.js'
 
 
 
@@ -25,16 +24,13 @@ window.mockData={};
 // }
 
 window.mockData=require('./mock/index.js').default;
-
 //registerServiceWorker()
-
 // const store = createStore(reducers, compose(
 //     applyMiddleware(thunk),
 //     window.devToolsExtension ? window.devToolsExtension() : f => f
 // ))
 window.store=store;
 //console.log(store);
-
 ReactDOM.render((
     <Provider store={store}>
         <BrowserRouter>
