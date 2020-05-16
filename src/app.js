@@ -1,11 +1,8 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-<<<<<<< HEAD
 import Container from './ant-design/hooks/container.js'
-=======
-import Container from './ant-design/scrollpagnation/container.js'
->>>>>>> 434525f07f64281001f223bea16e211825fed603
-import AppDragDropDemo from './ant-design/drag'
+// import Container from './ant-design/scrollpagnation/container.js'
+//import AppDragDropDemo from './ant-design/drag'
 
 //import FinishedView from './ant-design/mobx'
 import './app.css'
@@ -17,7 +14,7 @@ class App extends React.Component {
         return (
             <div>
                 {/* <Route path="/drag" component={AppDragDropDemo}></Route> */}
-                <Route path="/scrollpagnation" component={Container}></Route>
+                <Route path="/demo" component={Container}></Route>
                 {/* <Route path="/mobx" component={FinishedView}></Route> */}
                 {/* <DatePicker /> */}
             </div>

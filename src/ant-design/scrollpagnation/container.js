@@ -4,7 +4,7 @@ import * as Redux from 'redux'
 import * as ReactRedux from 'react-redux'
 import RegistrationForm from './components/form';
 
-import ReactPageScroller from "react-page-scroller";
+// import ReactPageScroller from "react-page-scroller";
 
 import CommonTable from './components/table';
 import { Tabs, Layout} from 'antd';
@@ -40,7 +40,7 @@ class Container extends React.Component {
     
     return (
         <div className="page-wrap">
-            <div>
+            {/* <div>
                 <ReactPageScroller 
                 containerHeight={200}
                 containerWidth={200}
@@ -57,7 +57,7 @@ class Container extends React.Component {
                 </div>
          
                 </ReactPageScroller>
-            </div> 
+            </div>  */}
             <Footer>
                 <address>
                     <cite>By:Laury</cite>
