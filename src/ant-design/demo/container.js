@@ -36,6 +36,22 @@ class Container extends React.Component {
         getFormList();
         console.log(window.store);
     }
+
+    inTheCircle = (e)=>{
+        //alert(12343);
+
+        var r=50;//圆的半径
+        var x1 = 100, y1=100;
+        var x2 = e.clientX;
+        var y2 = e.clientY;
+        //计算鼠标点的位置与圆心的距离
+            var len=Math.abs(Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2)));
+            if(len<=50){
+                console.log("内")
+            }else{
+                console.log("外")
+            }
+    }
     
     
     render(){
@@ -47,7 +63,15 @@ class Container extends React.Component {
         <Layout className="page-wrap">
             <Header className='title'>AntDesign_component</Header>
             <Content className="page-content">
-            <div >
+
+            <div>我要在这里画一个圆</div>
+
+            <img src="t.jpg" width="136" height="168" border="0" useMap="#Map" />
+            <map name="Map" id="Map"></map>
+            <area shape="circle" coords="821,289,68" href="www.baidu.com" target="_blank" />
+            <div className="haha" ></div>
+            <div className="disc" onClick={this.inTheCircle} >智学无忧</div>
+            <div>
                 <p>
                     <strong>AntDesign-</strong><br></br>
                     写这篇文档的目的主要是为了总结一下andDesign组件的使用方法
